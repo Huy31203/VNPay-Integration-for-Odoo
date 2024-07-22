@@ -1,0 +1,8 @@
+<odoo>
+  <!-- Define a new template with the id "redirect_form" -->
+  <template id="redirect_form">
+    <!-- Create a form that will be submitted via POST method -->
+    <!-- The action attribute is dynamically set to the value of "api_url" -->
+    <form t-att-action="api_url" method="post" />
+  </template>
+</odoo>

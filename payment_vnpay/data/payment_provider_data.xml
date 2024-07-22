@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Creates a new record in the 'payment.provider' model with the id 'payment_provider_vnpay'. -->
+    <record id="payment_provider_vnpay" model="payment.provider">
+        <field name="name">VNPay</field>
+        <field name="code">vnpay</field>
+        <field name="image_128" type="base64" file="payment_vnpay/static/description/icon.png" />
+        <!-- setting the redirect form to be a reference to the XML ID "redirect_form" in views  -->
+        <field name="redirect_form_view_id" ref="redirect_form" />
+    </record>
+</odoo>

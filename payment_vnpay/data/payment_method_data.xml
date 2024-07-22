@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+  <!-- Creates a new record in the 'payment.method' model with the id 'payment_method_vnpay'. -->
+  <record id="payment_method_vnpay" model="payment.method">
+    <field name="name">VNPay</field>
+    <field name="code">vnpay</field>
+    <field name="sequence">0</field>
+    <field name="image" type="base64" file="payment_vnpay/static/description/icon.png" />
+    <field name="support_tokenization">False</field>
+    <field name="support_express_checkout">False</field>
+    <field name="support_refund">partial</field>
+    <!-- This line sets the 'supported_country_ids' field of the record to Vietnam. -->
+    <field name="supported_country_ids"
+      eval="[Command.set([
+              ref('base.vn'),
+          ])]"
+    />
+    <!-- This line sets the 'supported_currency_ids' field of the record to VND. -->
+    <field name="supported_currency_ids"
+      eval="[Command.set([
+              ref('base.VND'),
+          ])]"
+    />
+  </record>
+</odoo>
