@@ -1,0 +1,54 @@
+<odoo>
+  <!-- Define a new record of the model "ir.ui.view" -->
+  <record id="payment_provider_form_vnpay" model="ir.ui.view">
+    <!-- Set the name of the view -->
+    <field name="name">VNPay Provider Form</field>
+    <!-- Set the model that this view is related to -->
+    <field name="model">payment.provider</field>
+    <!-- Inherit from the existing "payment.provider.form" view -->
+    <field name="inherit_id" ref="payment.payment_provider_form" />
+    <!-- Define the architecture of the view -->
+    <field name="arch" type="xml">
+      <!-- Find the group named "provider_credentials" -->
+      <group name="provider_credentials" position="inside">
+        <!-- Define a new group that is only visible when the code is "vnpay" -->
+        <group invisible="code != 'vnpay'"
+          name="vnpay_credentials" string="VNPay payment credentials">
+          <!-- Define a field for the Terminal ID (vnp_TmnCode) -->
+          <!-- This field is required when the code is "vnpay" and the state is not "disabled" -->
+          <field name="vnpay_tmn_code"
+            string="VNPay Website Code (vnp_TmnCode)"
+            required="code == 'vnpay' and state != 'disabled'"
+          />
+          <!-- Define a field for the Secret Key (vnp_HashSecret) -->
+          <!-- This field is required when the code is "vnpay" and the state is not "disabled" -->
+          <!-- The value of this field is hidden (password="True") -->
+          <field name="vnpay_hash_secret"
+            string="VNPay Hash Secret (vnp_HashSecret)"
+            required="code == 'vnpay' and state != 'disabled'"
+            password="True"
+          />
+          <!-- Define a field for the Payment URL (vnp_Url) -->
+          <!-- This field is required when the code is "vnpay" and the state is not "disabled" -->
+          <field name="vnpay_payment_link"
+            string="VNPay Payment URL (vnp_Url)"
+            required="code == 'vnpay' and state != 'disabled'"
+          />
+          <!-- Define a field for the White List IPs -->
+          <!-- This field is required when the code is "vnpay" and the state is not "disabled" -->
+          <field name="vnpay_white_list_ip"
+            string="VNPay White List IPs"
+            required="code == 'vnpay' and state != 'disabled'"
+            placeholder="e.g. 1.1.1.1; 2.2.2.2"
+          />
+          <!-- show "IPN URL" -->
+          <field name="vnpay_ipn_url"
+            string="VNPay IPN URL"
+            required="code == 'vnpay' and state != 'disabled'"
+            readonly="1"
+          />
+        </group>
+      </group>
+    </field>
+  </record>
+</odoo>
