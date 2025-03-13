@@ -1,0 +1,71 @@
+<odoo>
+  <!-- Define a new record of the model "ir.ui.view" -->
+  <record id="payment_pos_form_vnpayqr" model="ir.ui.view">
+    <!-- Set the name of the view -->
+    <field name="name">VNPay Provider Form</field>
+    <!-- Set the model that this view is related to -->
+    <field name="model">payment.provider</field>
+    <!-- Inherit from the existing "payment.provider.form" view -->
+    <field name="inherit_id" ref="payment.payment_provider_form" />
+    <!-- Define the architecture of the view -->
+    <field name="arch" type="xml">
+      <!-- Find the group named "provider_credentials" -->
+      <group name="provider_credentials" position="inside">
+        <!-- Define a new group that is only visible when the code is "vnpayqr" -->
+        <group invisible="code != 'vnpayqr'"
+          name="vnpayqr_credentials" string="VNPay QR credentials">
+          <!-- Define a field for the QR Terminal ID (vnp_TmnCode) -->
+          <!-- This field is required when the code is "vnpayqr" and the state is not "disabled" -->
+          <field name="vnpayqr_tmn_code"
+            string="VNPay Website Code for QR (TmnCode)"
+            required="code == 'vnpayqr' and state != 'disabled'"
+          />
+          <!-- Define a field for the Merchant Code (vnp_Merchant) -->
+          <!-- This field is required when the code is "vnpayqr" and the state is not "disabled" -->
+          <field name="vnpayqr_merchant_code"
+            string="VNPay Merchant Code"
+            required="code == 'vnpayqr' and state != 'disabled'"
+          />
+          <!-- Define a field for the Merchant Name (vnp_MerchantName) -->
+          <!-- This field is required when the code is "vnpayqr" and the state is not "disabled" -->
+          <field name="vnpayqr_merchant_name"
+            string="VNPay Merchant Name"
+            required="code == 'vnpayqr' and state != 'disabled'"
+          />
+          <!-- Define a field for the Merchant Type (vnp_MerchantType) -->
+          <!-- This field is required when the code is "vnpayqr" and the state is not "disabled" -->
+          <field name="vnpayqr_merchant_type"
+            string="VNPay Merchant Type"
+            required="code == 'vnpayqr' and state != 'disabled'"
+          />
+          <!-- Define a field for the App ID (vnp_AppId) -->
+          <!-- This field is required when the code is "vnpayqr" and the state is not "disabled" -->
+          <field name="vnpayqr_app_id"
+            string="VNPay App ID"
+            required="code == 'vnpayqr' and state != 'disabled'"
+          />
+          <!-- Define a field for the Secret Key (vnp_SecureHashSecret) -->
+          <!-- This field is required when the code is "vnpayqr" and the state is not "disabled" -->
+          <!-- This field save sensitive infomation so enable the password -->
+          <field name="vnpayqr_secret_key"
+            string="VNPay QR Secret Key"
+            required="code == 'vnpayqr' and state != 'disabled'"
+            password="True"
+          />
+          <!-- Define a field for the QR Create URL (vnpayqr_qr_create_url) -->
+          <!-- This field is required when the code is "vnpayqr" and the state is not "disabled" -->
+          <field name="vnpayqr_create_url"
+            string="VNPay QR create URL"
+            required="code == 'vnpayqr' and state != 'disabled'"
+          />
+          <!-- show "IPN URL" -->
+          <field name="vnpayqr_ipn_url"
+            string="VNPay-QR IPN URL"
+            required="code == 'vnpay' and state != 'disabled'"
+            readonly="1"
+          />
+        </group>
+      </group>
+    </field>
+  </record>
+</odoo>
