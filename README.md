@@ -14,6 +14,7 @@ This repository provides a seamless integration of VNPay, a popular payment gate
 - Webhook notifications
 - Real-time Payment Status
 - Detailed Logs
+- POS integration with dynamic payment QR code
 
 ## Not implemented features
 
